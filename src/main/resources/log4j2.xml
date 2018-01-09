@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <ScriptPatternSelector defaultPattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %l - %msg%n">
+                    <Script name="LevelSelector" language="javascript"><![CDATA[
+                            result=null;
+                            switch (logEvent.getLevel())
+                            {
+                                case org.apache.logging.log4j.Level.ERROR:
+                                    result=logEvent.getLevel();
+                                    break;
+                                case org.apache.logging.log4j.Level.INFO:
+                                    result=logEvent.getLevel();
+                                    break;
+                                default:
+                                    result=null;
+                            }
+                            result;
+                            ]]>
+                    </Script>
+                    <PatternMatch key="ERROR" pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %l - %msg%n"/>
+                    <PatternMatch key="INFO" pattern="%msg%n"/>
+                </ScriptPatternSelector>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="Logger" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <!-- Root Logger -->
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+
+
+</Configuration>

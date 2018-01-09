@@ -1,0 +1,48 @@
+<raceProperties>
+    <trackLength>100</trackLength>
+    <vehicles>
+        <car>
+            <driverName>Outlaw</driverName>
+            <wheelChangeTime>5555</wheelChangeTime>
+            <speed>23</speed>
+            <piercingChance>0.2</piercingChance>
+            <peopleCount>0</peopleCount>
+        </car>
+        <car>
+            <driverName>Meatball</driverName>
+            <wheelChangeTime>5555</wheelChangeTime>
+            <speed>26.4</speed>
+            <piercingChance>0.22</piercingChance>
+            <peopleCount>0</peopleCount>
+
+        </car>
+        <car>
+            <driverName>Golden Kid</driverName>
+            <wheelChangeTime>5555</wheelChangeTime>
+            <speed>44</speed>
+            <piercingChance>0.22</piercingChance>
+            <peopleCount>0</peopleCount>
+        </car>
+        <car>
+            <driverName>Slugs</driverName>
+            <wheelChangeTime>5555</wheelChangeTime>
+            <speed>32</speed>
+            <piercingChance>0.30</piercingChance>
+            <peopleCount>0</peopleCount>
+        </car>
+        <truck>
+            <driverName>Chaser</driverName>
+            <wheelChangeTime>10000</wheelChangeTime>
+            <speed>13.5</speed>
+            <piercingChance>0.05</piercingChance>
+            <cargoWeight>55</cargoWeight>
+        </truck>
+        <motorcycle>
+            <driverName>Rustle</driverName>
+            <wheelChangeTime>2500</wheelChangeTime>
+            <speed>44</speed>
+            <piercingChance>0.12</piercingChance>
+            <hasSidecar>true</hasSidecar>
+        </motorcycle>
+    </vehicles>
+</raceProperties>

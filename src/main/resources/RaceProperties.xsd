@@ -1,0 +1,123 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- definition of simple elements -->
+    <xs:element name="trackLength">
+        <xs:simpleType>
+            <xs:restriction base="xs:double">
+                <xs:minExclusive value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="driverName" type="xs:string"/>
+
+    <xs:element name="wheelChangeTime">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:minExclusive value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="speed">
+        <xs:simpleType>
+            <xs:restriction base="xs:double">
+                <xs:minExclusive value="0.0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="piercingChance">
+        <xs:simpleType>
+            <xs:restriction base="xs:double">
+                <xs:minInclusive value="0.0"/>
+                <xs:maxExclusive value="1.0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="peopleCount">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:minInclusive value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="hasSidecar" type="xs:boolean"/>
+
+    <xs:element name="cargoWeight">
+        <xs:simpleType>
+            <xs:restriction base="xs:double">
+                <xs:minInclusive value="0.0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <!-- definition of complex elements -->
+    <xs:element name="car" type="car"/>
+
+    <xs:element name="motorcycle" type="motorcycle"/>
+
+    <xs:element name="raceProperties" type="raceProperties"/>
+
+    <xs:element name="truck" type="truck"/>
+
+    <xs:element name="vehicle" type="vehicle"/>
+
+    <xs:complexType name="raceProperties">
+        <xs:sequence>
+            <xs:element ref="trackLength"/>
+            <xs:element name="vehicles" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element ref="car"/>
+                            <xs:element ref="motorcycle"/>
+                            <xs:element ref="truck"/>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="vehicle" abstract="true">
+        <xs:sequence>
+            <xs:element ref="driverName"/>
+            <xs:element ref="wheelChangeTime"/>
+            <xs:element ref="speed"/>
+            <xs:element ref="piercingChance"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="car">
+        <xs:complexContent>
+            <xs:extension base="vehicle">
+                <xs:sequence>
+                    <xs:element ref="peopleCount" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="motorcycle">
+        <xs:complexContent>
+            <xs:extension base="vehicle">
+                <xs:sequence>
+                    <xs:element ref="hasSidecar" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="truck">
+        <xs:complexContent>
+            <xs:extension base="vehicle">
+                <xs:sequence>
+                    <xs:element ref="cargoWeight" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
